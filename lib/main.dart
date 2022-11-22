@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main()  async{
@@ -34,25 +34,25 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget _buildBody() {
-    return StreamBuilder<QuerySnapshot>(  // Streamを監視して、イベントが通知される度にWidgetを更新する
-      stream: FirebaseFirestore.instance.collection("dogs").snapshots(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) return LinearProgressIndicator();
-        return _buildList(snapshot.data.docs);
-      },
-    );
-  }
-
-  Widget _buildList(List<DocumentSnapshot> snapList) {
-    return ListView.builder(
-        padding: const EdgeInsets.all(18.0),
-        itemCount: snapList.length,
-        itemBuilder: (context, i) {
-          return _buildListItem(snapList[i]);
-        }
-    );
-  }
+  // Widget _buildBody() {
+  //   return StreamBuilder<QuerySnapshot>(  // Streamを監視して、イベントが通知される度にWidgetを更新する
+  //     stream: FirebaseFirestore.instance.collection("dogs").snapshots(),
+  //     builder: (context, snapshot) {
+  //       if (!snapshot.hasData) return LinearProgressIndicator();
+  //       return _buildList(snapshot.data.docs);
+  //     },
+  //   );
+  // }
+  //
+  // Widget _buildList(List<DocumentSnapshot> snapList) {
+  //   return ListView.builder(
+  //       padding: const EdgeInsets.all(18.0),
+  //       itemCount: snapList.length,
+  //       itemBuilder: (context, i) {
+  //         return _buildListItem(snapList[i]);
+  //       }
+  //   );
+  // }
 
   Widget _buildListItem(DocumentSnapshot snap) {
     Map<String, dynamic> data = snap.data();
